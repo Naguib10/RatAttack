@@ -6,11 +6,19 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject rat;
+    [SerializeField] GameObject cat;
+    [SerializeField] GameObject kid;
     [SerializeField] GameObject house;
     [SerializeField] GameObject clickedGameObject;
+    [SerializeField] string clickedGameObjectTag;
+
     [SerializeField] Text ratCounterText;
+    [SerializeField] Text catCounterText;
+    [SerializeField] Text kidCounterText;
 
     [SerializeField] int ratCounter = 0;
+    [SerializeField] int catCounter = 0;
+    [SerializeField] int kidCounter = 0;
 
 
 
@@ -18,6 +26,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         rat = GameObject.Find("Rat");
+        cat = GameObject.Find("Cat");
+        kid = GameObject.Find("Kid");
         house = GameObject.Find("House");
     }
 
@@ -33,6 +43,7 @@ public class GameManager : MonoBehaviour
         {
 
             clickedGameObject = null;
+            clickedGameObjectTag = null;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
@@ -40,29 +51,56 @@ public class GameManager : MonoBehaviour
             if (hit2d)
             {
                 clickedGameObject = hit2d.transform.gameObject;
+                clickedGameObjectTag = clickedGameObject.tag;
             }
 
-            if (clickedGameObject == rat)
+            if (clickedGameObjectTag == "GameResources")
             {
-                CollectRat();
+                Collect();
             }
             else if (clickedGameObject == house)
             {
                 if (Input.GetKey(KeyCode.Alpha1))
                 {
-                    ThrowRat();
+                    Throw();
                 }
+
             }
         }
     }
 
-    void CollectRat() 
+    void Collect() 
     {
-        ratCounter++;
-        ratCounterText.text = "Rat Counter: " + ratCounter;
+
+        //string resource = "";
+
+        switch (clickedGameObjectTag)
+        {
+            case "rat":
+                ratCounter++;
+                ratCounterText.text = "Rat Counter: " + ratCounter;
+                break;
+
+            case "cat":
+                catCounter++;
+                catCounterText.text = "Cat Counter: " + catCounter;
+                break;
+
+            case "kid":
+                kidCounter++;
+                kidCounterText.text = "Kid Counter: " + kidCounter;
+                break;
+
+            /*
+            default:
+                break;
+            */
+        }
+
+
     }
 
-    void ThrowRat() 
+    void Throw() 
     {
         if (ratCounter > 0) 
         {
