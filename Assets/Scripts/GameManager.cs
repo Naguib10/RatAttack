@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject rat;
-    [SerializeField] GameObject cat;
-    [SerializeField] GameObject kid;
+    //[SerializeField] GameObject rat;
+    //[SerializeField] GameObject cat;
+    //[SerializeField] GameObject kid;
     [SerializeField] GameObject house;
     [SerializeField] GameObject clickedGameObject;
     [SerializeField] string clickedGameObjectTag;
@@ -25,9 +25,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rat = GameObject.Find("Rat");
-        cat = GameObject.Find("Cat");
-        kid = GameObject.Find("Kid");
+        //rat = GameObject.Find("Rat");
+        //cat = GameObject.Find("Cat");
+        //kid = GameObject.Find("Kid");
         house = GameObject.Find("House");
     }
 
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
         {
 
             clickedGameObject = null;
-            clickedGameObjectTag = null;
+            //clickedGameObjectTag = null;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
@@ -72,29 +72,28 @@ public class GameManager : MonoBehaviour
     void Collect() 
     {
 
-        //string resource = "";
+        //string typeOfResource = clickedGameObject.ToString();
 
-        switch (clickedGameObjectTag)
+        switch (clickedGameObject.ToString())
         {
-            case "rat":
+            case "Rat":
                 ratCounter++;
                 ratCounterText.text = "Rat Counter: " + ratCounter;
                 break;
 
-            case "cat":
+            case "Cat":
                 catCounter++;
                 catCounterText.text = "Cat Counter: " + catCounter;
                 break;
 
-            case "kid":
+            case "Kid":
                 kidCounter++;
                 kidCounterText.text = "Kid Counter: " + kidCounter;
                 break;
 
-            /*
             default:
+                Debug.Log(clickedGameObject.ToString());
                 break;
-            */
         }
 
 
