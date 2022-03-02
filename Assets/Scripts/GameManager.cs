@@ -5,12 +5,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    //[SerializeField] GameObject rat;
-    //[SerializeField] GameObject cat;
-    //[SerializeField] GameObject kid;
-    [SerializeField] GameObject house;
     [SerializeField] GameObject clickedGameObject;
-    [SerializeField] string clickedGameObjectTag;
 
     [SerializeField] Text ratCounterText;
     [SerializeField] Text catCounterText;
@@ -20,24 +15,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] int catCounter = 0;
     [SerializeField] int kidCounter = 0;
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-        //rat = GameObject.Find("Rat");
-        //cat = GameObject.Find("Cat");
-        //kid = GameObject.Find("Kid");
-        house = GameObject.Find("House");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        KeyControle();
+        ControlScheme();
     }
 
-    void KeyControle() 
+    void ControlScheme() 
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -51,27 +41,40 @@ public class GameManager : MonoBehaviour
             if (hit2d)
             {
                 clickedGameObject = hit2d.transform.gameObject;
-                clickedGameObjectTag = clickedGameObject.tag;
-            }
+                //clickedGameObjectTag = clickedGameObject.tag;
 
-            if (clickedGameObjectTag == "GameResources")
-            {
-                Collect();
-            }
-            else if (clickedGameObject == house)
-            {
-                if (Input.GetKey(KeyCode.Alpha1))
+                if (clickedGameObject.tag == "GameResources")
+                {
+                    Collect();
+                }
+                else if (clickedGameObject.tag == "Target")
                 {
                     Throw();
                 }
-
             }
         }
     }
 
     void Collect() 
     {
+        if (clickedGameObject.name == "Rat")
+        {
+            ratCounter++;
+            ratCounterText.text = "Rat Counter: " + ratCounter;
+        }
+        else if (clickedGameObject.name == "Cat")
+        {
+            catCounter++;
+            catCounterText.text = "Cat Counter: " + catCounter;
+        }
+        else if (clickedGameObject.name == "Kid") 
+        {
+            kidCounter++;
+            kidCounterText.text = "Kid Counter: " + kidCounter;
+        }
 
+        /*
+        
         //string typeOfResource = clickedGameObject.ToString();
 
         switch (clickedGameObject.ToString())
@@ -95,16 +98,34 @@ public class GameManager : MonoBehaviour
                 Debug.Log(clickedGameObject.ToString());
                 break;
         }
-
-
+        */
     }
 
     void Throw() 
     {
-        if (ratCounter > 0) 
+        if (Input.GetKey(KeyCode.Alpha1))
         {
-            ratCounter--;
+            if (ratCounter > 0)
+            {
+                ratCounter--;
+            }
+            ratCounterText.text = "Rat Counter: " + ratCounter;
+        } 
+        else if (Input.GetKey(KeyCode.Alpha2))
+        {
+            if (catCounter > 0)
+            {
+                catCounter--;
+            }
+            catCounterText.text = "Cat Counter: " + catCounter;
         }
-        ratCounterText.text = "Rat Counter: " + ratCounter;
+        else if (Input.GetKey(KeyCode.Alpha3))
+        {
+            if (kidCounter > 0)
+            {
+                kidCounter--;
+            }
+            kidCounterText.text = "Kid Counter: " + kidCounter;
+        }
     }
 }
