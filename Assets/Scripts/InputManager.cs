@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
     [SerializeField] GameObject clickedGameObject;
 
@@ -35,21 +35,22 @@ public class GameManager : MonoBehaviour
             {
                 clickedGameObject = hit2d.transform.gameObject;
 
-                if (clickedGameObject.tag == "GameResources")
+                if (clickedGameObject.transform.GetComponent<Resource>())//Use Better to class name instead of using name or tag
                 {
                     Collect();
                 }
-                else if (clickedGameObject.tag == "Target")
+                else if (clickedGameObject.transform.GetComponent<House>())//Use Better to class name instead of using name or tag
                 {
+                    {
                     Throw();
                 }
             }
         }
     }
 
-    void Collect() 
+    void Collect() //Suppposed to add, Destroy function from Resource class
     {
-        switch (clickedGameObject.name)
+        switch (clickedGameObject.tag)// .tag is better than name since there is possibility to changed the name accidentaly.
         {
             case "Rat":
                 ratCounter++;
@@ -72,8 +73,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Throw() 
-    {
+    void Throw() //Suppposed to add, Spawn function from Resource class
+        {
         if (Input.GetKey(KeyCode.Alpha1))
         {
             if (ratCounter > 0)
