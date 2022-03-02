@@ -79,24 +79,24 @@ public class GameManager : MonoBehaviour
             if (ratCounter > 0)
             {
                 ratCounter--;
+                ratCounterText.text = "Rat Counter: " + ratCounter;
             }
-            ratCounterText.text = "Rat Counter: " + ratCounter;
         } 
         else if (Input.GetKey(KeyCode.Alpha2))
         {
             if (catCounter > 0)
             {
                 catCounter--;
+                catCounterText.text = "Cat Counter: " + catCounter;
             }
-            catCounterText.text = "Cat Counter: " + catCounter;
         }
         else if (Input.GetKey(KeyCode.Alpha3))
         {
             if (kidCounter > 0)
             {
                 kidCounter--;
+                kidCounterText.text = "Kid Counter: " + kidCounter;
             }
-            kidCounterText.text = "Kid Counter: " + kidCounter;
         }
     }
 }
