@@ -15,12 +15,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] int catCounter = 0;
     [SerializeField] int kidCounter = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -33,7 +27,6 @@ public class GameManager : MonoBehaviour
         {
 
             clickedGameObject = null;
-            //clickedGameObjectTag = null;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
@@ -41,7 +34,6 @@ public class GameManager : MonoBehaviour
             if (hit2d)
             {
                 clickedGameObject = hit2d.transform.gameObject;
-                //clickedGameObjectTag = clickedGameObject.tag;
 
                 if (clickedGameObject.tag == "GameResources")
                 {
@@ -57,27 +49,7 @@ public class GameManager : MonoBehaviour
 
     void Collect() 
     {
-        if (clickedGameObject.name == "Rat")
-        {
-            ratCounter++;
-            ratCounterText.text = "Rat Counter: " + ratCounter;
-        }
-        else if (clickedGameObject.name == "Cat")
-        {
-            catCounter++;
-            catCounterText.text = "Cat Counter: " + catCounter;
-        }
-        else if (clickedGameObject.name == "Kid") 
-        {
-            kidCounter++;
-            kidCounterText.text = "Kid Counter: " + kidCounter;
-        }
-
-        /*
-        
-        //string typeOfResource = clickedGameObject.ToString();
-
-        switch (clickedGameObject.ToString())
+        switch (clickedGameObject.name)
         {
             case "Rat":
                 ratCounter++;
@@ -98,7 +70,6 @@ public class GameManager : MonoBehaviour
                 Debug.Log(clickedGameObject.ToString());
                 break;
         }
-        */
     }
 
     void Throw() 
