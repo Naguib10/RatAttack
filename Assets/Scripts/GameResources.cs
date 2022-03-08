@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameResources : MonoBehaviour
 {
+    public GameObject resourcePrefab;
+
+    public float spawnTime = 1.0f;
+
     public float speed = 10.0f;
     private Rigidbody2D rb;
     private Vector2 screenBounds;
@@ -12,10 +16,25 @@ public class GameResources : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+    }
+
+    public void Spawn()
+    {
+        GameObject resource = Instantiate(resourcePrefab);
+        resource.transform.position = new Vector2(screenBounds.x, Random.Range(-screenBounds.y, screenBounds.y * 0.5f));
+    }
+
+    public void MoveAround()
+    {
         speed = Random.Range(6.0f, 12.0f);
         rb = this.GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-speed, 0);
-        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+    }
+
+    public void DestroyResource()
+    {
+        Destroy(this.gameObject);
     }
 
     // Update is called once per frame
