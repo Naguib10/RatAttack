@@ -16,7 +16,9 @@ public class GameResources : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        MoveAround();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+
     }
 
     public void Spawn()
@@ -30,6 +32,7 @@ public class GameResources : MonoBehaviour
         speed = Random.Range(6.0f, 12.0f);
         rb = this.GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-speed, 0);
+        //screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
     public void DestroyResource()
