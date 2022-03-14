@@ -11,41 +11,65 @@ public class GameResources : MonoBehaviour
     public float speed = 10.0f;
     private Rigidbody2D rb;
     private Vector2 screenBounds;
+    private float[] rightOrLeft = { 1f, -1f };
+    private float randomPosition;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        MoveAround();
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
+        randomPosition = rightOrLeft[Random.Range(0, 2)];
+
+        Invoke("Spawn", spawnTime);
+        //StartCoroutine(Spawn());
+        //Spawn();
+        MoveAround();
+
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (transform.position.x < -screenBounds.x * 1.2)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void Spawn()
     {
-        GameObject resource = Instantiate(resourcePrefab);
-        resource.transform.position = new Vector2(screenBounds.x, Random.Range(-screenBounds.y, screenBounds.y * 0.5f));
+        //while (true)
+       // {
+            //yield return new WaitForSeconds(spawnTime);
+            Instantiate(resourcePrefab, new Vector2(screenBounds.x * randomPosition, Random.Range(-screenBounds.y, screenBounds.y * 0.5f)), Quaternion.identity);
+
+        //}
+        
     }
 
     public void MoveAround()
     {
         speed = Random.Range(6.0f, 12.0f);
         rb = this.GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(-speed, 0);
-        //screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+
+        if (randomPosition <= 0.0f)
+        {
+            rb.velocity = new Vector2(-speed, 0);
+        } else if (randomPosition >= 0.0f)
+        {
+            rb.velocity = new Vector2(speed, 0);
+        }
+        print(randomPosition);
     }
+
 
     public void DestroyResource()
     {
         Destroy(this.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (transform.position.x < -screenBounds.x * 2)
-        {
-            Destroy(this.gameObject);
-        }
-    }
 }
