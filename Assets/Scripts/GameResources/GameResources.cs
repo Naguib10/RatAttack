@@ -12,7 +12,7 @@ public class GameResources : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 screenBounds;
     private float[] rightOrLeft = { 1f, -1f };
-    private float randomPosition;
+    //private float randomPosition;
 
 
     // Start is called before the first frame update
@@ -20,9 +20,9 @@ public class GameResources : MonoBehaviour
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
-        randomPosition = rightOrLeft[Random.Range(0, 2)];
+        //randomPosition = rightOrLeft[Random.Range(0, 2)];
 
-        Invoke("Spawn", spawnTime);
+        //Invoke("Spawn", spawnTime);
         //StartCoroutine(Spawn());
         //Spawn();
         MoveAround();
@@ -34,7 +34,7 @@ public class GameResources : MonoBehaviour
     void Update()
     {
 
-        if (transform.position.x < -screenBounds.x * 1.2)
+        if (transform.position.x < -screenBounds.x * 1.2 || transform.position.x > screenBounds.x * 1.2)
         {
             Destroy(this.gameObject);
         }
@@ -42,10 +42,12 @@ public class GameResources : MonoBehaviour
 
     public void Spawn()
     {
+        //----------- This spawn should be for spawning on clicking! not for the automatic spawning------------------------//
+
         //while (true)
        // {
             //yield return new WaitForSeconds(spawnTime);
-            Instantiate(resourcePrefab, new Vector2(screenBounds.x * randomPosition, Random.Range(-screenBounds.y, screenBounds.y * 0.5f)), Quaternion.identity);
+            //Instantiate(resourcePrefab, new Vector2(screenBounds.x * randomPosition, Random.Range(-screenBounds.y, screenBounds.y) * 0.5f), Quaternion.identity);
 
         //}
         
@@ -56,20 +58,27 @@ public class GameResources : MonoBehaviour
         speed = Random.Range(6.0f, 12.0f);
         rb = this.GetComponent<Rigidbody2D>();
 
-        if (randomPosition <= 0.0f)
+        if (transform.position.x > 0)
         {
             rb.velocity = new Vector2(-speed, 0);
-        } else if (randomPosition >= 0.0f)
+        } else if (transform.position.x < 0)
         {
             rb.velocity = new Vector2(speed, 0);
         }
-        print(randomPosition);
+        //print(randomPosition);
     }
 
 
     public void DestroyResource()
     {
+        // destroy resource either in house or pick up from street
+
         Destroy(this.gameObject);
+    }
+
+    public void PlaceInHouse()
+    {
+        //placing the object in either house by the player
     }
 
 }
