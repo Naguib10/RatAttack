@@ -42,7 +42,7 @@ public class SpawningManager : MonoBehaviour
                 break;
         }
 
-        print(startingSide + " " + randomResource);
+        //print(startingSide + " " + randomResource);
     
     }
 
