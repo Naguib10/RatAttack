@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
     [SerializeField] GameObject clickedGameObject;
-    //public GameResources gameResources = FindObjectOfType<GameResources>();
 
     [SerializeField] Text ratCounterText;
     [SerializeField] Text catCounterText;
@@ -16,7 +15,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] int catCounter = 0;
     [SerializeField] int kidCounter = 0;
 
-    // Update is called once per frame
+
     void Update()
     {
         ControlScheme();
@@ -88,9 +87,10 @@ public class InputManager : MonoBehaviour
                 break;
         }
         */
+
         GameResources gameResources = clickedGameObject.GetComponent<GameResources>();
 
-        switch (gameResources.gameResourcesTypes)
+        switch (gameResources.gameResourcesTypes)//Using Enum value from GameResources script
         {
             case GameResources.GameResourcesTypes.Rat:
                 ratCounter++;
