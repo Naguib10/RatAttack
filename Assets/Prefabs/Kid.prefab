@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &1048410807248714642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8767793595683402116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 737e59ead621c1d4b960e4cbaef99ed2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourcePrefab: {fileID: 8767793595683402116}
-  gameResourcesTypes: 0
-  spawnTime: 1
-  speed: 10
 --- !u!1001 &890751428428002033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29,7 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8498820701123773301, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
       propertyPath: m_TagString
-      value: Kid
+      value: GameResources
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498820701123773320, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
+      propertyPath: gameResourcesTypes
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8498820701123773322, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
       propertyPath: m_Color.b
@@ -89,8 +77,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
---- !u!1 &8767793595683402116 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8498820701123773301, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
-  m_PrefabInstance: {fileID: 890751428428002033}
-  m_PrefabAsset: {fileID: 0}
