@@ -36,11 +36,11 @@ public class InputManager : MonoBehaviour
             {
                 clickedGameObject = hit2d.transform.gameObject;
 
-                if (clickedGameObject.GetComponent<GameResources>())//Use "Resource" tag name. No transform between clickedGameObject nad tag since here.
+                if (clickedGameObject.tag == "GameResources")//Use "GameResources" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     Collect();
                 }
-                else if (clickedGameObject.GetComponent<Houses>())//Use "House" tag name. No transform between clickedGameObject nad tag since here.
+                else if (clickedGameObject.tag == "Houses")//Use "Houses" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     //Debug.Log(clickedGameObject.ToString());
                     Throw();
@@ -62,7 +62,7 @@ public class InputManager : MonoBehaviour
         //cat,kid as well
         */
 
-
+        /*
         switch (clickedGameObject.tag)// <-- Need to change!! Use Enum value in "Resource" class.
         {
            
@@ -87,9 +87,7 @@ public class InputManager : MonoBehaviour
                 Debug.Log("Nothing clicked");
                 break;
         }
-        
-
-        /*
+        */
         GameResources gameResources = clickedGameObject.GetComponent<GameResources>();
 
         switch (gameResources.gameResourcesTypes)
@@ -110,10 +108,10 @@ public class InputManager : MonoBehaviour
                 break;
 
             default:
-                Debug.Log(clickedGameObject.ToString());
+                //Debug.Log(clickedGameObject.ToString());
+                Debug.Log("Nothing clicked");
                 break;
         }
-        */
     }
 
     void Throw() //Suppposed to be added, Spawn function from Resource class
