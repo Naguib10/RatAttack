@@ -23,36 +23,44 @@ public class InputManager : MonoBehaviour
 
     void ControlScheme() 
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))// When clicked Mouse-Left-Button
         {
 
             clickedGameObject = null;
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
+            RaycastHit2D hit2d = Physics2D.Raycast(ray.origin, ray.direction);// No need "(Vector2)" in front of ray
 
-            /*
             if (hit2d)
             {
                 clickedGameObject = hit2d.transform.gameObject;
 
-                if (clickedGameObject.transform.GetComponent<Resource>())//Use Better to class name instead of using name or tag
+                if (clickedGameObject.tag == "GameResources")//Use "Resource" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     Collect();
                 }
-                else if (clickedGameObject.transform.GetComponent<House>())//Use Better to class name instead of using name or tag
+                else if (clickedGameObject.tag == "Houses")//Use "House" tag name. No transform between clickedGameObject nad tag since here.
                 {
-                    {
                     Throw();
                 }
             }
-            */
         }
     }
 
     void Collect() //Suppposed to add, Destroy function from Resource class
     {
-        switch (clickedGameObject.tag)// .tag is better than name since there is possibility to changed the name accidentaly.
+        /*
+         * 
+         * If writing as follow by using cast, it works, but it ie better to use Enum instead.
+        GameResources gameResource = clickedGameObject.GetComponent<GameResources>();
+        Rat rat = (Rat) gameResource;
+
+        if (rat !=null){}
+
+        //cat,kid as well
+        */
+
+        switch (clickedGameObject.tag)// <-- Need to change!! Use Enum value in "Resource" class.
         {
             case "Rat":
                 ratCounter++;
@@ -73,9 +81,35 @@ public class InputManager : MonoBehaviour
                 Debug.Log(clickedGameObject.ToString());
                 break;
         }
+
+        /*
+        GameResources gameResources = clickedGameObject.GetComponent<GameResources>();
+
+        switch (gameResources.gameResourcesTypes)
+        {
+            case gameResourcesTypes.:
+                ratCounter++;
+                ratCounterText.text = "Rat Counter: " + ratCounter;
+                break;
+
+            case gameResourcesTypes.:
+                catCounter++;
+                catCounterText.text = "Cat Counter: " + catCounter;
+                break;
+
+            case gameResourcesTypes.:
+                kidCounter++;
+                kidCounterText.text = "Kid Counter: " + kidCounter;
+                break;
+
+            default:
+                Debug.Log(clickedGameObject.ToString());
+                break;
+        }
+        */
     }
 
-    void Throw() //Suppposed to add, Spawn function from Resource class
+    void Throw() //Suppposed to be added, Spawn function from Resource class
         {
         if (Input.GetKey(KeyCode.Alpha1))
         {
