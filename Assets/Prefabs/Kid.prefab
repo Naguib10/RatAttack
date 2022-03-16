@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737e59ead621c1d4b960e4cbaef99ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourcePrefab: {fileID: 8767793595683402116, guid: 326548fe814bcb84ca4b991768709362, type: 3}
+  resourcePrefab: {fileID: 8767793595683402116}
+  gameResourcesTypes: 0
   spawnTime: 1
   speed: 10
 --- !u!1001 &890751428428002033
@@ -24,6 +25,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8498820701123773301, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
       propertyPath: m_Name
+      value: Kid
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498820701123773301, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
+      propertyPath: m_TagString
       value: Kid
       objectReference: {fileID: 0}
     - target: {fileID: 8498820701123773322, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}

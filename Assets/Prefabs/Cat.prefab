@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8498820701123773301, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
       propertyPath: m_Name
-      value: Cat Variant
+      value: Cat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8498820701123773301, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
+      propertyPath: m_TagString
+      value: Cat
       objectReference: {fileID: 0}
     - target: {fileID: 8498820701123773320, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
       propertyPath: speed

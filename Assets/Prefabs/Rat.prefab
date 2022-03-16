@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8498820701123773320}
   m_Layer: 6
   m_Name: Rat
-  m_TagString: Untagged
+  m_TagString: Rat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,5 +135,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourcePrefab: {fileID: 8498820701123773301}
+  gameResourcesTypes: 0
   spawnTime: 1
   speed: 9.248713
