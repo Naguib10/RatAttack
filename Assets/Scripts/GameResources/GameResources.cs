@@ -6,6 +6,8 @@ public class GameResources : MonoBehaviour
 {
     public GameObject resourcePrefab;
 
+    public GameResourcesTypes gameResourcesTypes;
+
     public float spawnTime = 1.0f;
 
     public float speed = 10.0f;
@@ -79,6 +81,14 @@ public class GameResources : MonoBehaviour
     public void PlaceInHouse()
     {
         //placing the object in either house by the player
+    }
+
+
+    public enum GameResourcesTypes
+    {
+        Rat,
+        Cat,
+        Kid
     }
 
 }
