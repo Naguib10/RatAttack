@@ -35,11 +35,11 @@ public class InputManager : MonoBehaviour
             {
                 clickedGameObject = hit2d.transform.gameObject;
 
-                if (clickedGameObject.tag == "Resource")//Use "Resource" tag name.
+                if (clickedGameObject.tag == "GameResources")//Use "Resource" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     Collect();
                 }
-                else if (clickedGameObject.tag == "House")//Use "House" tag name.
+                else if (clickedGameObject.tag == "Houses")//Use "House" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     Throw();
                 }
@@ -49,6 +49,17 @@ public class InputManager : MonoBehaviour
 
     void Collect() //Suppposed to add, Destroy function from Resource class
     {
+        /*
+         * 
+         * If writing as follow by using cast, it works, but it ie better to use Enum instead.
+        GameResources gameResource = clickedGameObject.GetComponent<GameResources>();
+        Rat rat = (Rat) gameResource;
+
+        if (rat !=null){}
+
+        //cat,kid as well
+        */
+
         switch (clickedGameObject.tag)// <-- Need to change!! Use Enum value in "Resource" class.
         {
             case "Rat":
@@ -70,6 +81,32 @@ public class InputManager : MonoBehaviour
                 Debug.Log(clickedGameObject.ToString());
                 break;
         }
+
+        /*
+        GameResources gameResources = clickedGameObject.GetComponent<GameResources>();
+
+        switch (gameResources.gameResourcesTypes)
+        {
+            case gameResourcesTypes.:
+                ratCounter++;
+                ratCounterText.text = "Rat Counter: " + ratCounter;
+                break;
+
+            case gameResourcesTypes.:
+                catCounter++;
+                catCounterText.text = "Cat Counter: " + catCounter;
+                break;
+
+            case gameResourcesTypes.:
+                kidCounter++;
+                kidCounterText.text = "Kid Counter: " + kidCounter;
+                break;
+
+            default:
+                Debug.Log(clickedGameObject.ToString());
+                break;
+        }
+        */
     }
 
     void Throw() //Suppposed to be added, Spawn function from Resource class
