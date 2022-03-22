@@ -15,7 +15,6 @@ public class InputManager : MonoBehaviour
     [SerializeField] int catCounter = 0;
     [SerializeField] int kidCounter = 0;
 
-    // Update is called once per frame
     void Update()
     {
         ControlScheme();
@@ -35,12 +34,14 @@ public class InputManager : MonoBehaviour
             {
                 clickedGameObject = hit2d.transform.gameObject;
 
-                if (clickedGameObject.tag == "GameResources")//Use "Resource" tag name. No transform between clickedGameObject nad tag since here.
+                if (clickedGameObject.tag == "GameResources")//Use "GameResources" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     Collect();
+                    Destroy(clickedGameObject);
                 }
-                else if (clickedGameObject.tag == "Houses")//Use "House" tag name. No transform between clickedGameObject nad tag since here.
+                else if (clickedGameObject.tag == "Houses")//Use "Houses" tag name. No transform between clickedGameObject nad tag since here.
                 {
+                    //Debug.Log(clickedGameObject.ToString());
                     Throw();
                 }
             }
@@ -60,9 +61,12 @@ public class InputManager : MonoBehaviour
         //cat,kid as well
         */
 
+        /*
         switch (clickedGameObject.tag)// <-- Need to change!! Use Enum value in "Resource" class.
         {
+           
             case "Rat":
+                //clickedGameObject..DestroyResource();
                 ratCounter++;
                 ratCounterText.text = "Rat Counter: " + ratCounter;
                 break;
@@ -78,35 +82,36 @@ public class InputManager : MonoBehaviour
                 break;
 
             default:
-                Debug.Log(clickedGameObject.ToString());
+                //Debug.Log(clickedGameObject.ToString());
+                Debug.Log("Nothing clicked");
                 break;
         }
+        */
 
-        /*
         GameResources gameResources = clickedGameObject.GetComponent<GameResources>();
 
-        switch (gameResources.gameResourcesTypes)
+        switch (gameResources.gameResourcesTypes)//Using Enum value from GameResources script
         {
-            case gameResourcesTypes.:
+            case GameResources.GameResourcesTypes.Rat:
                 ratCounter++;
                 ratCounterText.text = "Rat Counter: " + ratCounter;
                 break;
 
-            case gameResourcesTypes.:
+            case GameResources.GameResourcesTypes.Cat:
                 catCounter++;
                 catCounterText.text = "Cat Counter: " + catCounter;
                 break;
 
-            case gameResourcesTypes.:
+            case GameResources.GameResourcesTypes.Kid:
                 kidCounter++;
                 kidCounterText.text = "Kid Counter: " + kidCounter;
                 break;
 
             default:
-                Debug.Log(clickedGameObject.ToString());
+                //Debug.Log(clickedGameObject.ToString());
+                Debug.Log("Nothing clicked");
                 break;
         }
-        */
     }
 
     void Throw() //Suppposed to be added, Spawn function from Resource class
