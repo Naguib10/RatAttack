@@ -15,7 +15,6 @@ public class InputManager : MonoBehaviour
     [SerializeField] int catCounter = 0;
     [SerializeField] int kidCounter = 0;
 
-
     void Update()
     {
         ControlScheme();
@@ -38,6 +37,7 @@ public class InputManager : MonoBehaviour
                 if (clickedGameObject.tag == "GameResources")//Use "GameResources" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     Collect();
+                    Destroy(clickedGameObject);
                 }
                 else if (clickedGameObject.tag == "Houses")//Use "Houses" tag name. No transform between clickedGameObject nad tag since here.
                 {
