@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameResources : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameResources : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 screenBounds;
     private float[] rightOrLeft = { 1f, -1f };
+
+
     //private float randomPosition;
 
 
@@ -21,12 +24,6 @@ public class GameResources : MonoBehaviour
     void Start()
     {
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
-        //randomPosition = rightOrLeft[Random.Range(0, 2)];
-
-        //Invoke("Spawn", spawnTime);
-        //StartCoroutine(Spawn());
-        //Spawn();
         MoveAround();
 
     }
@@ -42,18 +39,24 @@ public class GameResources : MonoBehaviour
         }
     }
 
-    public void Spawn()
-    {
-        //----------- This spawn should be for spawning on clicking! not for the automatic spawning------------------------//
-
-        //while (true)
-       // {
-            //yield return new WaitForSeconds(spawnTime);
-            //Instantiate(resourcePrefab, new Vector2(screenBounds.x * randomPosition, Random.Range(-screenBounds.y, screenBounds.y) * 0.5f), Quaternion.identity);
-
-        //}
+    //public void SpawnRat()
+    //{
+    //    //----------- This spawn should be for spawning on clicking! not for the automatic spawning------------------------//
+    //    imageEnemyHouse.sprite = ratSprite;
         
-    }
+    //}
+
+    //public void SpawnCat()
+    //{
+    //    imageEnemyHouse.sprite = catSprite;
+    //}
+
+    //public void SpawnKid()
+    //{
+    //    imageEnemyHouse.sprite = kidSprite;
+    //}
+
+
 
     public void MoveAround()
     {

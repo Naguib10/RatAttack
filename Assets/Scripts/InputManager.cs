@@ -15,6 +15,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] int catCounter = 0;
     [SerializeField] int kidCounter = 0;
 
+    public ResourceImageUpdate imageUpdater;
+
     void Update()
     {
         ControlScheme();
@@ -94,7 +96,7 @@ public class InputManager : MonoBehaviour
         {
             case GameResources.GameResourcesTypes.Rat:
                 ratCounter++;
-                ratCounterText.text = "Rat Counter: " + ratCounter;
+                ratCounterText.text = "Rat Counter: " + ratCounter;              
                 break;
 
             case GameResources.GameResourcesTypes.Cat:
@@ -118,27 +120,45 @@ public class InputManager : MonoBehaviour
         {
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            if (ratCounter > 0)
+            if (imageUpdater.isCat || imageUpdater.isRat)
+            {
+                return;
+            }
+            else
             {
                 ratCounter--;
                 ratCounterText.text = "Rat Counter: " + ratCounter;
+                imageUpdater.SpawnRat();
             }
+
         } 
         else if (Input.GetKey(KeyCode.Alpha2))
         {
-            if (catCounter > 0)
+            if (imageUpdater.isKid || imageUpdater.isCat)
+            {
+                return;
+            }
+            else
             {
                 catCounter--;
                 catCounterText.text = "Cat Counter: " + catCounter;
+                imageUpdater.SpawnCat();
             }
+
         }
         else if (Input.GetKey(KeyCode.Alpha3))
         {
-            if (kidCounter > 0)
+            if (imageUpdater.isKid || imageUpdater.isRat)
+            {
+                return;
+            }
+            else
             {
                 kidCounter--;
                 kidCounterText.text = "Kid Counter: " + kidCounter;
+                imageUpdater.SpawnKid();
             }
+
         }
     }
 }
