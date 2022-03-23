@@ -1077,19 +1077,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1630314551}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca694924bb10d34aafb0c0792bc7696, type: 3}
+  m_Script: {fileID: 11500000, guid: d8cd95fc50953c84180bb70c045e571b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rat: {fileID: 8498820701123773320, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
-  cat: {fileID: 5389257286271473830, guid: 5a78b9e0c0f62a249a6de0f1efe2b769, type: 3}
-  kid: {fileID: 8767793595683402105, guid: 326548fe814bcb84ca4b991768709362, type: 3}
-  clickedGameObject: {fileID: 0}
-  ratCounterText: {fileID: 369906268}
-  catCounterText: {fileID: 1297326332}
-  kidCounterText: {fileID: 1125691989}
-  ratCounter: 0
-  catCounter: 0
-  kidCounter: 0
 --- !u!4 &1630314553
 Transform:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] int catCounter = 0;
     [SerializeField] int kidCounter = 0;
 
-    public ResourceImageUpdate imageUpdater;
+    //public ResourceImageUpdate imageUpdater;
 
     void Update()
     {
@@ -44,7 +44,7 @@ public class InputManager : MonoBehaviour
                 else if (clickedGameObject.tag == "Houses")//Use "Houses" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     //Debug.Log(clickedGameObject.ToString());
-                    Throw();
+                    //Throw();
                 }
             }
         }
@@ -111,6 +111,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    /*
     void Throw() //Suppposed to be added, Spawn function from Resource class
     {
         if (Input.GetKey(KeyCode.Alpha1))
@@ -156,4 +157,5 @@ public class InputManager : MonoBehaviour
 
         }
     }
+    */
 }

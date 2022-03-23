@@ -394,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 507180017}
-  - component: {fileID: 507180016}
+  - component: {fileID: 507180018}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -402,18 +402,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &507180016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 507180015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8cd95fc50953c84180bb70c045e571b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &507180017
 Transform:
   m_ObjectHideFlags: 0
@@ -428,6 +416,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &507180018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507180015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ca694924bb10d34aafb0c0792bc7696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rat: {fileID: 8498820701123773320, guid: 98f611b45d3c5d448bfa8b5ec991d5b2, type: 3}
+  cat: {fileID: 5389257286271473830, guid: 5a78b9e0c0f62a249a6de0f1efe2b769, type: 3}
+  kid: {fileID: 8767793595683402105, guid: 326548fe814bcb84ca4b991768709362, type: 3}
+  clickedGameObject: {fileID: 0}
+  ratCounterText: {fileID: 555153853}
+  catCounterText: {fileID: 1285674525}
+  kidCounterText: {fileID: 944197903}
+  ratCounter: 0
+  catCounter: 0
+  kidCounter: 0
 --- !u!1 &555153850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,7 +1116,7 @@ GameObject:
   - component: {fileID: 1897635556}
   - component: {fileID: 1897635555}
   m_Layer: 5
-  m_Name: EnemyHousesRatCounter (1)
+  m_Name: EnemyHousesRatCounter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
