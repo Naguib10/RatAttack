@@ -192,5 +192,4 @@ public class InputManager : MonoBehaviour
             Instantiate(typeOfResource, respwanResourcePos, Quaternion.identity);
         }
     }
-
 }
