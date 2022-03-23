@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
+    public GameResources rat, cat, kid;
+
     [SerializeField] GameObject clickedGameObject;
 
     [SerializeField] Text ratCounterText;
@@ -116,12 +118,21 @@ public class InputManager : MonoBehaviour
 
     void Throw() //Suppposed to be added, Spawn function from Resource class
         {
+
+        // Respawn point for captured resource thrown to Houses
+        Vector2 respwanResourcePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+
         if (Input.GetKey(KeyCode.Alpha1))
         {
             if (ratCounter > 0)
             {
+                
                 ratCounter--;
                 ratCounterText.text = "Rat Counter: " + ratCounter;
+
+                RespwanResourceAtHouse(rat);
+
             }
         } 
         else if (Input.GetKey(KeyCode.Alpha2))
@@ -130,6 +141,8 @@ public class InputManager : MonoBehaviour
             {
                 catCounter--;
                 catCounterText.text = "Cat Counter: " + catCounter;
+
+                RespwanResourceAtHouse(cat);
             }
         }
         else if (Input.GetKey(KeyCode.Alpha3))
@@ -138,7 +151,16 @@ public class InputManager : MonoBehaviour
             {
                 kidCounter--;
                 kidCounterText.text = "Kid Counter: " + kidCounter;
+
+                RespwanResourceAtHouse(kid);
             }
         }
+
+        // Respawn captured resource at mouse position (inside of house)
+        void RespwanResourceAtHouse(GameResources typeOfResource)
+        {
+            Instantiate(typeOfResource, respwanResourcePos, Quaternion.identity);
+        }
     }
+
 }
