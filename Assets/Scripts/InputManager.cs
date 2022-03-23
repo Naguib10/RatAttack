@@ -95,18 +95,15 @@ public class InputManager : MonoBehaviour
         switch (gameResources.gameResourcesTypes)//Using Enum value from GameResources script
         {
             case GameResources.GameResourcesTypes.Rat:
-                ratCounter++;
-                ratCounterText.text = "Rat Counter: " + ratCounter;
+                IncreaseResourceCounter(ratCounter);
                 break;
 
             case GameResources.GameResourcesTypes.Cat:
-                catCounter++;
-                catCounterText.text = "Cat Counter: " + catCounter;
+                IncreaseResourceCounter(catCounter);
                 break;
 
             case GameResources.GameResourcesTypes.Kid:
-                kidCounter++;
-                kidCounterText.text = "Kid Counter: " + kidCounter;
+                IncreaseResourceCounter(kidCounter);
                 break;
 
             default:
@@ -114,18 +111,34 @@ public class InputManager : MonoBehaviour
                 Debug.Log("Nothing clicked");
                 break;
         }
+
+        void IncreaseResourceCounter(int typeOfResouceCounter)
+        {
+            if (typeOfResouceCounter == ratCounter)
+            {
+                ratCounter++;
+                ratCounterText.text = "Rat Counter: " + ratCounter;
+            }
+            else if (typeOfResouceCounter == catCounter)
+            {
+                catCounter++;
+                catCounterText.text = "Cat Counter: " + catCounter;
+            }
+            else if (typeOfResouceCounter == kidCounter)
+            {
+                kidCounter++;
+                kidCounterText.text = "Kid Counter: " + kidCounter;
+            }
+        }
     }
 
     void ThrowResource() //Suppposed to be added, Spawn function from Resource class
     {
-
         if (Input.GetKey(KeyCode.Alpha1))
         {
             if (ratCounter > 0)
             {
-                
-                ratCounter--;
-                ratCounterText.text = "Rat Counter: " + ratCounter;
+                DecreaseResourceCounter(ratCounter);
 
                 RespwanResourceAtHouse(rat);
             }
@@ -134,8 +147,7 @@ public class InputManager : MonoBehaviour
         {
             if (catCounter > 0)
             {
-                catCounter--;
-                catCounterText.text = "Cat Counter: " + catCounter;
+                DecreaseResourceCounter(catCounter);
 
                 RespwanResourceAtHouse(cat);
             }
@@ -144,10 +156,30 @@ public class InputManager : MonoBehaviour
         {
             if (kidCounter > 0)
             {
-                kidCounter--;
-                kidCounterText.text = "Kid Counter: " + kidCounter;
+                DecreaseResourceCounter(kidCounter);
 
                 RespwanResourceAtHouse(kid);
+            }
+        }
+
+
+        // When using (throuwing) the number of the thrown resouce to be decreased
+        void DecreaseResourceCounter(int typeOfResouceCounter) 
+        {
+            if (typeOfResouceCounter == ratCounter)
+            {
+                ratCounter--;
+                ratCounterText.text = "Rat Counter: " + ratCounter;
+            } 
+            else if (typeOfResouceCounter == catCounter)
+            {
+                catCounter--;
+                catCounterText.text = "Cat Counter: " + catCounter;
+            } 
+            else if (typeOfResouceCounter == kidCounter) 
+            {
+                kidCounter--;
+                kidCounterText.text = "Kid Counter: " + kidCounter;
             }
         }
 
