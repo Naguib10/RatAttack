@@ -19,10 +19,10 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        ControlScheme();
+        PlayerControlScheme();
     }
 
-    void ControlScheme() 
+    void PlayerControlScheme() 
     {
         if (Input.GetMouseButtonDown(0))// When clicked Mouse-Left-Button
         {
@@ -38,19 +38,19 @@ public class InputManager : MonoBehaviour
 
                 if (clickedGameObject.tag == "GameResources")//Use "GameResources" tag name. No transform between clickedGameObject nad tag since here.
                 {
-                    Collect();
+                    CollectResource();
                     Destroy(clickedGameObject);
                 }
                 else if (clickedGameObject.tag == "Houses")//Use "Houses" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     //Debug.Log(clickedGameObject.ToString());
-                    Throw();
+                    ThrowResource();
                 }
             }
         }
     }
 
-    void Collect() //Suppposed to add, Destroy function from Resource class
+    void CollectResource() //Suppposed to add, Destroy function from Resource class
     {
         /*
          * 
@@ -116,7 +116,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    void Throw() //Suppposed to be added, Spawn function from Resource class
+    void ThrowResource() //Suppposed to be added, Spawn function from Resource class
         {
 
         // Respawn point for captured resource thrown to Houses
@@ -132,7 +132,6 @@ public class InputManager : MonoBehaviour
                 ratCounterText.text = "Rat Counter: " + ratCounter;
 
                 RespwanResourceAtHouse(rat);
-
             }
         } 
         else if (Input.GetKey(KeyCode.Alpha2))
