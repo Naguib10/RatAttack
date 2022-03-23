@@ -117,11 +117,7 @@ public class InputManager : MonoBehaviour
     }
 
     void ThrowResource() //Suppposed to be added, Spawn function from Resource class
-        {
-
-        // Respawn point for captured resource thrown to Houses
-        Vector2 respwanResourcePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
+    {
 
         if (Input.GetKey(KeyCode.Alpha1))
         {
@@ -158,6 +154,9 @@ public class InputManager : MonoBehaviour
         // Respawn captured resource at mouse position (inside of house)
         void RespwanResourceAtHouse(GameResources typeOfResource)
         {
+            // Respawn point for captured resource thrown to Houses
+            Vector2 respwanResourcePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
             Instantiate(typeOfResource, respwanResourcePos, Quaternion.identity);
         }
     }
