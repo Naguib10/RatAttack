@@ -39,11 +39,9 @@ public class InputManager1 : MonoBehaviour
                 if (clickedGameObject.tag == "GameResources")//Use "GameResources" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     CollectResource();
-                    Destroy(clickedGameObject);
                 }
                 else if (clickedGameObject.tag == "Houses")//Use "Houses" tag name. No transform between clickedGameObject nad tag since here.
                 {
-                    //Debug.Log(clickedGameObject.ToString());
                     ThrowResource();
                 }
             }
@@ -112,6 +110,8 @@ public class InputManager1 : MonoBehaviour
                 break;
         }
 
+        Destroy(clickedGameObject);
+
         void IncreaseResourceCounter(int typeOfResouceCounter)
         {
             if (typeOfResouceCounter == ratCounter)
@@ -136,47 +136,35 @@ public class InputManager1 : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            if (ratCounter > 0)
-            {
-                DecreaseResourceCounter(ratCounter);
-
-                RespwanResourceAtHouse(rat);
-            }
+            DecreaseResourceCounter(ratCounter);
+            RespwanResourceAtHouse(rat, ratCounter);
         } 
         else if (Input.GetKey(KeyCode.Alpha2))
         {
-            if (catCounter > 0)
-            {
-                DecreaseResourceCounter(catCounter);
-
-                RespwanResourceAtHouse(cat);
-            }
+            DecreaseResourceCounter(catCounter);
+            RespwanResourceAtHouse(cat, catCounter);
         }
         else if (Input.GetKey(KeyCode.Alpha3))
         {
-            if (kidCounter > 0)
-            {
-                DecreaseResourceCounter(kidCounter);
-
-                RespwanResourceAtHouse(kid);
-            }
+            DecreaseResourceCounter(kidCounter);
+            RespwanResourceAtHouse(kid, kidCounter);
         }
 
 
         // When using (throuwing) the number of the thrown resouce to be decreased
         void DecreaseResourceCounter(int typeOfResouceCounter) 
         {
-            if (typeOfResouceCounter == ratCounter)
+            if (typeOfResouceCounter == ratCounter && ratCounter > 0)
             {
                 ratCounter--;
                 ratCounterText.text = "Rat Counter: " + ratCounter;
             } 
-            else if (typeOfResouceCounter == catCounter)
+            else if (typeOfResouceCounter == catCounter && catCounter > 0)
             {
                 catCounter--;
                 catCounterText.text = "Cat Counter: " + catCounter;
             } 
-            else if (typeOfResouceCounter == kidCounter) 
+            else if (typeOfResouceCounter == kidCounter && kidCounter > 0) 
             {
                 kidCounter--;
                 kidCounterText.text = "Kid Counter: " + kidCounter;
@@ -184,12 +172,15 @@ public class InputManager1 : MonoBehaviour
         }
 
         // Respawn captured resource at mouse position (inside of house)
-        void RespwanResourceAtHouse(GameResources typeOfResource)
+        void RespwanResourceAtHouse(GameResources typeOfResource, int typeOfResouceCounter)
         {
             // Respawn point for captured resource thrown to Houses
             Vector2 respwanResourcePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            Instantiate(typeOfResource, respwanResourcePos, Quaternion.identity);
+            if (typeOfResouceCounter > 0) 
+            {
+                Instantiate(typeOfResource, respwanResourcePos, Quaternion.identity);
+            }
         }
     }
 }
