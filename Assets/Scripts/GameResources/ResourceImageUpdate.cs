@@ -14,7 +14,7 @@ public class ResourceImageUpdate : MonoBehaviour
     public bool isRat, isCat, isKid;
 
 
-    public void SpawnRat()
+    public void PlaceRat()
     {
         if (isKid)
         {
@@ -29,7 +29,7 @@ public class ResourceImageUpdate : MonoBehaviour
 
     }
 
-    public void SpawnCat()
+    public void PlaceCat()
     {
         if (isRat)
         {
@@ -44,7 +44,7 @@ public class ResourceImageUpdate : MonoBehaviour
 
     }
 
-    public void SpawnKid()
+    public void PlaceKid()
     {
         if (isCat)
         {

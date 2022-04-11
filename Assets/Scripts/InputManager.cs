@@ -120,7 +120,7 @@ public class InputManager : MonoBehaviour
         {
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            if (imageUpdater.isCat || imageUpdater.isRat)
+            if (imageUpdater.isCat || imageUpdater.isRat || ratCounter==0)
             {
                 return;
             }
@@ -128,13 +128,13 @@ public class InputManager : MonoBehaviour
             {
                 ratCounter--;
                 ratCounterText.text = "Rat Counter: " + ratCounter;
-                imageUpdater.SpawnRat();
+                imageUpdater.PlaceRat();
             }
 
         } 
         else if (Input.GetKey(KeyCode.Alpha2))
         {
-            if (imageUpdater.isKid || imageUpdater.isCat)
+            if (imageUpdater.isKid || imageUpdater.isCat || catCounter == 0)
             {
                 return;
             }
@@ -142,13 +142,13 @@ public class InputManager : MonoBehaviour
             {
                 catCounter--;
                 catCounterText.text = "Cat Counter: " + catCounter;
-                imageUpdater.SpawnCat();
+                imageUpdater.PlaceCat();
             }
 
         }
         else if (Input.GetKey(KeyCode.Alpha3))
         {
-            if (imageUpdater.isKid || imageUpdater.isRat)
+            if (imageUpdater.isKid || imageUpdater.isRat || kidCounter == 0)
             {
                 return;
             }
@@ -156,7 +156,7 @@ public class InputManager : MonoBehaviour
             {
                 kidCounter--;
                 kidCounterText.text = "Kid Counter: " + kidCounter;
-                imageUpdater.SpawnKid();
+                imageUpdater.PlaceKid();
             }
 
         }
