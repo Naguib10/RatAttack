@@ -25,6 +25,7 @@ public class InputManager : MonoBehaviour
     public int ratAtEnemyHouse = 0;
     [SerializeField] Text numberOfRatAtPlayerHouse;
     [SerializeField] Text numberOfRatAtEnemyHouse;
+    [SerializeField] Text winOrLose;
 
     public string whichChamber;
 
@@ -32,9 +33,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] Text timer;
     [SerializeField] GameObject spawner;
 
-    [SerializeField] Text winOrLose;
-
-
+  
 
     void Update()
     {
@@ -55,15 +54,16 @@ public class InputManager : MonoBehaviour
 
             timer.text = "Time left(sec): " + timeRemaining.ToString("f2");
 
-            Debug.Log(timeRemaining);
         }
     }
 
     void CheckWinner() 
     {
-        if (timeRemaining == 0) 
+        if (timeRemaining <= 0) 
         {
-            Debug.Log("check winner");
+    
+            //Debug.Log("check winner");
+
             spawner.SetActive(false);
 
             if (ratAtPlayerHouse < ratAtEnemyHouse)

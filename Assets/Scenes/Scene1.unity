@@ -1653,11 +1653,11 @@ MonoBehaviour:
   ratAtEnemyHouse: 0
   numberOfRatAtPlayerHouse: {fileID: 1916115091}
   numberOfRatAtEnemyHouse: {fileID: 13922668}
+  winOrLose: {fileID: 1349990213}
   whichChamber: 
-  timeRemaining: 30
+  timeRemaining: 10
   timer: {fileID: 2002464474}
   spawner: {fileID: 1192497350}
-  winOrLose: {fileID: 0}
 --- !u!4 &1630314553
 Transform:
   m_ObjectHideFlags: 0
