@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour
 
     public string whichChamber;
 
-    [SerializeField] float timeRemaining = 30.00f;
+    public float timeRemaining = 10.00f;
     [SerializeField] Text timer;
     [SerializeField] GameObject spawner;
 
@@ -54,13 +54,16 @@ public class InputManager : MonoBehaviour
             timeRemaining -= Time.deltaTime;
 
             timer.text = "Time left(sec): " + timeRemaining.ToString("f2");
+
+            Debug.Log(timeRemaining);
         }
     }
 
     void CheckWinner() 
     {
-        if (timeRemaining == 0.00f) 
+        if (timeRemaining == 0) 
         {
+            Debug.Log("check winner");
             spawner.SetActive(false);
 
             if (ratAtPlayerHouse < ratAtEnemyHouse)
