@@ -17,12 +17,74 @@ public class InputManager : MonoBehaviour
 
     public ResourceImageUpdate imageUpdater;
 
+    public ResourceImageUpdate player1Image;
+    public ResourceImageUpdate player2Image;
+    public ResourceImageUpdate enemy1Image;
+
+    public int ratAtPlayerHouse = 0;
+    public int ratAtEnemyHouse = 0;
+    [SerializeField] Text numberOfRatAtPlayerHouse;
+    [SerializeField] Text numberOfRatAtEnemyHouse;
+
+    public string whichChamber;
+
+    [SerializeField] float timeRemaining = 30.00f;
+    [SerializeField] Text timer;
+    [SerializeField] GameObject spawner;
+
+    [SerializeField] Text winOrLose;
+
+
+
     void Update()
     {
         ControlScheme();
+
+        RatCounter();
+
+        CountDown();
+
+        CheckWinner();
     }
 
-    void ControlScheme() 
+    void CountDown() 
+    {
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+
+            timer.text = "Time left(sec): " + timeRemaining.ToString("f2");
+        }
+    }
+
+    void CheckWinner() 
+    {
+        if (timeRemaining == 0.00f) 
+        {
+            spawner.SetActive(false);
+
+            if (ratAtPlayerHouse < ratAtEnemyHouse)
+            {
+                winOrLose.text = "You win!!";
+            }
+            else if (ratAtPlayerHouse == ratAtEnemyHouse)
+            {
+                winOrLose.text = "Draw";
+            }
+            else
+            {
+                winOrLose.text = "You lose...";
+            }
+        } 
+    }
+
+    void RatCounter() 
+    {
+        numberOfRatAtPlayerHouse.text = "Rat@Player's House: " + ratAtPlayerHouse;
+        numberOfRatAtEnemyHouse.text = "Rat@Enemy's House: " + ratAtEnemyHouse;
+    }
+
+    public void ControlScheme() 
     {
         if (Input.GetMouseButtonDown(0))// When clicked Mouse-Left-Button
         {
@@ -41,10 +103,20 @@ public class InputManager : MonoBehaviour
                     Collect();
                     Destroy(clickedGameObject);
                 }
-                else if (clickedGameObject.tag == "Houses")//Use "Houses" tag name. No transform between clickedGameObject nad tag since here.
+                else if (clickedGameObject.tag == "PlayerChamber" || clickedGameObject.tag == "EnemyChamber")//Use "Houses" tag name. No transform between clickedGameObject nad tag since here.
                 {
                     //Debug.Log(clickedGameObject.ToString());
+                    if (clickedGameObject.tag == "PlayerChamber")
+                    {
+                        whichChamber = "PlayerChamber";
+                    }
+                    else if (clickedGameObject.tag == "EnemyChamber")
+                    {
+                        whichChamber = "EnemyChamber";
+                    }
                     Throw();
+
+                    
                 }
             }
         }
@@ -118,6 +190,33 @@ public class InputManager : MonoBehaviour
 
     void Throw() //Suppposed to be added, Spawn function from Resource class
         {
+
+        ResourceImageUpdate clickedImage = clickedGameObject.GetComponent<ResourceImageUpdate>();
+        imageUpdater = clickedImage;
+        switch (clickedImage.chamberNumber)
+
+        {
+            case ResourceImageUpdate.ChamberNumber.p1:
+                player1Image = imageUpdater;
+                break;
+
+            case ResourceImageUpdate.ChamberNumber.p2:
+                player2Image = imageUpdater;
+                break;
+
+            case ResourceImageUpdate.ChamberNumber.e1:
+                enemy1Image = imageUpdater;
+                break;
+
+            default:
+                //other more
+                break;
+                
+
+
+        }
+        
+
         if (Input.GetKey(KeyCode.Alpha1))
         {
             if (imageUpdater.isCat || imageUpdater.isRat || ratCounter==0)

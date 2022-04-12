@@ -9,6 +9,8 @@ TagManager:
   - Cat
   - Kid
   - Houses
+  - PlayerChamber
+  - EnemyChamber
   layers:
   - Default
   - TransparentFX
