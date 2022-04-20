@@ -31,7 +31,10 @@ public class InputManager : MonoBehaviour
 
     public float timeRemaining = 10.00f;
     [SerializeField] Text timer;
-    [SerializeField] GameObject spawner;
+    bool isGameFinished = false;
+
+    //[SerializeField] GameObject spawner;
+    SpawningManager spawner;
 
   
 
@@ -55,16 +58,23 @@ public class InputManager : MonoBehaviour
             timer.text = "Time left(sec): " + timeRemaining.ToString("f2");
 
         }
+
+        if (timeRemaining <= 0 && timeRemaining > -0.1)
+        {
+            timeRemaining = -1;
+            isGameFinished = true;
+        }
     }
 
     void CheckWinner() 
     {
-        if (timeRemaining <= 0) 
+        if (isGameFinished) 
         {
     
             //Debug.Log("check winner");
 
-            spawner.SetActive(false);
+            //spawner.SetActive(false);
+            //spawner.CancelSpawn();
 
             if (ratAtPlayerHouse < ratAtEnemyHouse)
             {
@@ -78,7 +88,10 @@ public class InputManager : MonoBehaviour
             {
                 winOrLose.text = "You lose...";
             }
-        } 
+
+            isGameFinished = false;
+        }
+        
     }
 
     void RatCounter() 

@@ -23,8 +23,9 @@ public class ResourceImageUpdate : MonoBehaviour
     {
         if (isKid)
         {
-            imageInHouse.sprite = emptySprite;
+            imageInHouse.sprite = ratSprite;
             isKid = false;
+            isRat = true;
         }
         else if (!isKid)
         {
@@ -48,8 +49,9 @@ public class ResourceImageUpdate : MonoBehaviour
     {
         if (isRat)
         {
-            imageInHouse.sprite = emptySprite;
+            imageInHouse.sprite = catSprite;
             isRat = false;
+            isCat = true;
 
             if (inputManager.whichChamber == "PlayerChamber")
             {
@@ -72,8 +74,9 @@ public class ResourceImageUpdate : MonoBehaviour
     {
         if (isCat)
         {
-            imageInHouse.sprite = emptySprite;
+            imageInHouse.sprite = kidSprite;
             isCat = false;
+            isKid = true;
         }
         else if (!isCat)
         {

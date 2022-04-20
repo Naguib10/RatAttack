@@ -46,6 +46,11 @@ public class SpawningManager : MonoBehaviour
     
     }
 
+    public void CancelSpawn()
+    {
+        CancelInvoke("Spawn");
+    }
+
 
     //IEnumerator ResourcesWave()
     //{
