@@ -33,8 +33,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] Text timer;
     bool isGameFinished = false;
 
-    //[SerializeField] GameObject spawner;
-    SpawningManager spawner;
+    [SerializeField] GameObject spawner;
+    //SpawningManager spawner;
 
   
 
@@ -73,7 +73,7 @@ public class InputManager : MonoBehaviour
     
             //Debug.Log("check winner");
 
-            //spawner.SetActive(false);
+            spawner.SetActive(false);
             //spawner.CancelSpawn();
 
             if (ratAtPlayerHouse < ratAtEnemyHouse)
