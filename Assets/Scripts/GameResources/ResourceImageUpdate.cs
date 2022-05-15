@@ -53,11 +53,11 @@ public class ResourceImageUpdate : MonoBehaviour
             isRat = false;
             isCat = true;
 
-            if (inputManager.whichChamber == "PlayerChamber")
+            if (inputManager.whichChamber == "PlayerChamber" && inputManager.ratAtPlayerHouse > 0)
             {
                 inputManager.ratAtPlayerHouse--;
             }
-            else if (inputManager.whichChamber == "EnemyChamber")
+            else if (inputManager.whichChamber == "EnemyChamber" && inputManager.ratAtEnemyHouse > 0)
             {
                 inputManager.ratAtEnemyHouse--;
             }
