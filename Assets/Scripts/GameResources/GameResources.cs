@@ -73,7 +73,7 @@ public class GameResources : MonoBehaviour
         //print(randomPosition);
     }
 
-
+    //test
     public void DestroyResource()
     {
         // destroy resource either in house or pick up from street
